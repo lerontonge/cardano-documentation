@@ -10,8 +10,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-        cache: 'yarn'
       - name: Install dependencies
-        run: yarn install broken-link-checker
+        run: yarn global add broken-link-checker
       - name: Check Links
         run: blc https://docs.cardano.org -ro
