@@ -1,0 +1,70 @@
+---
+title: Creating keys and operational certificates
+metaTitle: Creating keys and operational certificates
+---
+
+## About the stake pool operator keys
+
+It is the responsibility of the operator to manage both the hot (online), and
+cold (offline) keys for the pool. Cold keys must be secure and should not reside
+on a device that has internet connectivity. It is recommended that you have
+multiple backups of your cold keys.
+
+The keys that you need as a stake pool operator are:
+
+- stake pool cold key
+- stake pool hot key (KES key)
+- stake pool VRF key.
+
+The KES key, or hot key as mentioned above, is a node operational key that
+authenticates who you are. You specify the validity of the KES key using the
+start time and key period parameters and this KES key needs to be updated every
+90 days. The VRF key is a signing verification key and is stored within the
+operational certificate. 
+
+:::info
+
+Developer resources:
+
+- [Generating wallet keys](https://developers.cardano.org/docs/operate-a-stake-pool/generating-wallet-keys)
+- [Generating block-producing keys](https://developers.cardano.org/docs/operate-a-stake-pool/block-producer-keys)
+- [Cardano course: generating keys](https://cardano-course.gitbook.io/cardano-course/handbook/create-a-stake-pool/generate-keys).
+
+:::
+
+
+## Creating an operational certificate and registering a stake pool
+
+Stake pool operators must provide an operational certificate to verify that the
+pool has the authority to run. The certificate includes the operator’s signature
+and important information about the pool (addresses, keys, etc.)
+
+Operational certificates represent the link between the operator’s offline key
+and their operational key. A certificate’s job is to check whether or not an
+operational key is valid, to prevent malicious interference. The certificate
+identifies the current operational key, and is signed by the offline key.
+
+Certificates are generated with an issue counter number and included in the
+header of each block the node generates. 
+
+Certificates include a kes-period (start date), which indicates the period
+within which the certificate is valid before you need to create another one.
+
+Certificates are generated on the offline machine using the offline/cold keys,
+before being copied over to the node to validate the KES keys used to sign the
+blocks.
+
+:::info
+
+Developer resources:
+
+- [Registering a stake address](https://developers.cardano.org/docs/operate-a-stake-pool/register-stake-address)
+- [Registering a pool](https://developers.cardano.org/docs/operate-a-stake-pool/register-stake-pool)
+- [Cardano course: registering a stake pool](https://cardano-course.gitbook.io/cardano-course/handbook/create-a-stake-pool/register-stake-pool).
+
+:::
+
+
+
+
+
