@@ -42,7 +42,7 @@ const parseServerError = (error: string) => {
     case 'FaucetWebErrorRateLimitExeeeded':
       return 'Rate limit exceeded, please try later'
     case 'FaucetWebErrorUtxoNotFound':
-      return 'UTXO not found'
+      return 'UTXO not found or The faucet is temporarily out of funds for this request — please report it to IOG.'
     case 'FaucetWebErrorStakeKeyNotFound':
       return 'Stake key not found'
     case 'FaucetWebErrorAlreadyDelegated':
